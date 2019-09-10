@@ -158,7 +158,7 @@ namespace X.PagedList.Mvc.Core
             return WrapInListItem(text, options, "PagedList-pageCountAndLocation", "disabled");
         }
 
-        private static TagBuilder ItemSliceAndTotalText(IPagedList list, PagedListRenderOptionsBasPagere options)
+        private static TagBuilder ItemSliceAndTotalText(IPagedList list, PagedListRenderOptionsBase options)
         {
             var text = new TagBuilder("a");
             //foreach (var c in options.LiElementClasses ?? Enumerable.Empty<string>())
