@@ -147,16 +147,27 @@ namespace X.PagedList.Mvc.Core
         private static TagBuilder PageCountAndLocationText(IPagedList list, PagedListRenderOptionsBase options)
         {
             var text = new TagBuilder("a");
+
+            foreach (var c in options.PageClasses ?? Enumerable.Empty<string>())
+            {
+                text.AddCssClass(c);
+            }
+
             SetInnerText(text, string.Format(options.PageCountAndCurrentLocationFormat, list.PageNumber, list.PageCount));
 
             return WrapInListItem(text, options, "PagedList-pageCountAndLocation", "disabled");
         }
 
-        private static TagBuilder ItemSliceAndTotalText(IPagedList list, PagedListRenderOptionsBase options)
+        private static TagBuilder ItemSliceAndTotalText(IPagedList list, PagedListRenderOptionsBasPagere options)
         {
             var text = new TagBuilder("a");
-            foreach (var c in options.LiElementClasses ?? Enumerable.Empty<string>())
+            //foreach (var c in options.LiElementClasses ?? Enumerable.Empty<string>())
+            //    text.AddCssClass(c);
+
+            foreach (var c in options.PageClasses ?? Enumerable.Empty<string>())
+            {
                 text.AddCssClass(c);
+            }
 
             SetInnerText(text, string.Format(options.ItemSliceAndTotalFormat, list.FirstItemOnPage, list.LastItemOnPage, list.TotalItemCount));
 
@@ -166,6 +177,12 @@ namespace X.PagedList.Mvc.Core
         private static TagBuilder Ellipses(PagedListRenderOptionsBase options)
         {
             var a = new TagBuilder("a");
+
+            foreach (var c in options.PageClasses ?? Enumerable.Empty<string>())
+            {
+                a.AddCssClass(c);
+            }
+
             AppendHtml(a, options.EllipsesFormat);
 
             return WrapInListItem(a, options, options.EllipsesElementClass, "disabled");

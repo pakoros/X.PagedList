@@ -186,6 +186,12 @@ namespace X.PagedList.Mvc
         private static TagBuilder Ellipses(PagedListRenderOptionsBase options)
         {
             var a = new TagBuilder("a");
+
+            foreach (var c in options.PageClasses ?? Enumerable.Empty<string>())
+            {
+                a.AddCssClass(c);
+            }
+
             AppendHtml(a, options.EllipsesFormat);
 
             return WrapInListItem(a, options, options.EllipsesElementClass, "disabled");
