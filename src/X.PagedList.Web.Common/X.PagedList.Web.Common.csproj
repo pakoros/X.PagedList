@@ -13,6 +13,8 @@
     <FileVersion>7.9.0</FileVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/dncuug/X.PagedList.git</RepositoryUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>x_pagedlist_web_common.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

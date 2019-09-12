@@ -170,6 +170,10 @@ namespace X.PagedList.Mvc
         private static TagBuilder PageCountAndLocationText(IPagedList list, PagedListRenderOptionsBase options)
         {
             var text = new TagBuilder("a");
+
+            foreach (var c in options.PageClasses ?? Enumerable.Empty<string>())
+                text.AddCssClass(c);
+
             SetInnerText(text, string.Format(options.PageCountAndCurrentLocationFormat, list.PageNumber, list.PageCount));
 
             return WrapInListItem(text, options, "PagedList-pageCountAndLocation", "disabled");
@@ -178,6 +182,10 @@ namespace X.PagedList.Mvc
         private static TagBuilder ItemSliceAndTotalText(IPagedList list, PagedListRenderOptionsBase options)
         {
             var text = new TagBuilder("a");
+
+            foreach (var c in options.PageClasses ?? Enumerable.Empty<string>())
+                text.AddCssClass(c);
+
             SetInnerText(text, string.Format(options.ItemSliceAndTotalFormat, list.FirstItemOnPage, list.LastItemOnPage, list.TotalItemCount));
 
             return WrapInListItem(text, options, "PagedList-pageCountAndLocation", "disabled");
